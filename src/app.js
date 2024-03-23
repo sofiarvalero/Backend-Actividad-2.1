@@ -11,6 +11,7 @@ var index = require('./routes/index');
 const profesores = require('./routes/profesores.r')
 const materias = require('./routes/materias.r')
 const secciones = require('./routes/secciones.r')
+const eventos = require('./routes/eventos.r')
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/', index);
 app.use('/profesores', profesores);
 app.use('/materias', materias);
 app.use('/secciones', secciones);
+app.use('/eventos', eventos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
