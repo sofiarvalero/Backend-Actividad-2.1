@@ -6,6 +6,18 @@ const seccionesControllers = require('../controllers/secciones.c')
 router.get('/', function(req, res, next) {
     seccionesControllers.listar()
     .then((resultado) => {
+        res.render('secciones', {secciones: resultado})
+        //res.status(200).json({"secciones": resultado, "mensaje": "Listado con éxito las secciones"})
+    })
+    .catch((error) => {
+        res.status(400).json({"error": error})
+    })
+});
+
+// Listar secciones
+router.get('/get', function(req, res, next) {
+    seccionesControllers.listar()
+    .then((resultado) => {
         res.status(200).json({"secciones": resultado, "mensaje": "Listado con éxito las secciones"})
     })
     .catch((error) => {

@@ -6,6 +6,18 @@ const profesoresControllers = require('../controllers/profesores.c')
 router.get('/', function(req, res, next) {
     profesoresControllers.listar()
     .then((resultado) => {
+        res.render('profesores', {profesores: resultado})
+        // res.status(200).json({"profesores": resultado, "mensaje": "Listado con éxito los profesores"})
+    })
+    .catch((error) => {
+        res.status(400).json({"error": error})
+    })
+});
+
+// Listar Profesores
+router.get('/get', function(req, res, next) {
+    profesoresControllers.listar()
+    .then((resultado) => {
         res.status(200).json({"profesores": resultado, "mensaje": "Listado con éxito los profesores"})
     })
     .catch((error) => {

@@ -6,6 +6,18 @@ const materiasControllers = require("../controllers/materias.c");
 router.get("/", function (req, res, next) {
     materiasControllers.listar()
     .then((resultado) => {
+        res.render('materias', {materias: resultado})
+        //res.status(200).json({"materias": resultado, "mensaje": "Listado con éxito las materias"})
+    })
+    .catch((error) => {
+        res.status(400).json({"error": error})
+    })
+});
+
+// Listar Materias
+router.get("/get", function (req, res, next) {
+    materiasControllers.listar()
+    .then((resultado) => {
         res.status(200).json({"materias": resultado, "mensaje": "Listado con éxito las materias"})
     })
     .catch((error) => {
